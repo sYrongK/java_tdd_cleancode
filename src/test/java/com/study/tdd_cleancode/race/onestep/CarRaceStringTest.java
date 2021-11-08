@@ -1,4 +1,4 @@
-package com.study.tdd_cleancode.race;
+package com.study.tdd_cleancode.race.onestep;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;

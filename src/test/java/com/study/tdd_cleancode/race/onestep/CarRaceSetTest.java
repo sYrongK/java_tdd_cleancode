@@ -1,4 +1,4 @@
-package com.study.tdd_cleancode.race;
+package com.study.tdd_cleancode.race.onestep;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
