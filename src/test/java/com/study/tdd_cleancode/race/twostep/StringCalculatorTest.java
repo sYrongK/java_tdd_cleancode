@@ -29,11 +29,32 @@ public class StringCalculatorTest {
             operator = arr[i];  //index  1 3 5 7 9 11
             end = arr[i+1];     //index  2 4 6 8 10 12
 
-            CalculatorResolver resolver = new CalculatorResolver();
-            front = String.valueOf(resolver.resolve(operator, front, end));
+            AbstractCalculator calculator = OperatorType.getCalculator(operator, front, end);
+            front = String.valueOf(calculator.calculate());
         }
-        assertThat(front)
-                .isEqualTo("18");
+        assertThat(Integer.parseInt(front))
+                .isEqualTo(18);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 ! 5 - 1 * 6 / 2"})
+    void 연산자_오류(String args) {
+        String[] arr = args.split(" ");
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> {
+                    String front = arr[0];
+                    String operator = null;
+                    String end = null;
+
+                    for (int i = 1; i < arr.length; i+=2) {
+                        operator = arr[i];  //index  1 3 5 7 9 11
+                        end = arr[i+1];     //index  2 4 6 8 10 12
+
+                        AbstractCalculator calculator = OperatorType.getCalculator(operator, front, end);
+                        front = String.valueOf(calculator.calculate());
+                    }
+                }).withMessageMatching("잘못된 연산자 입니다.");
     }
 
     @ParameterizedTest
