@@ -24,8 +24,8 @@ public class StringCalculatorTest {
         Calculator calculator = new Calculator(input);
         MyNumber result = calculator.calculate();
 
-        assertThat(result)
-                .isEqualTo(new MyNumber(5));
+        assertThat(result.equals(new MyNumber(5)))
+                .isTrue();
     }
 
     @Test
@@ -35,8 +35,8 @@ public class StringCalculatorTest {
         Calculator calculator = new Calculator(input);
         MyNumber result = calculator.calculate();
 
-        assertThat(result)
-                .isEqualTo(new MyNumber(1));
+        assertThat(result.equals(new MyNumber(1)))
+                .isTrue();
     }
 
     @Test
@@ -46,8 +46,8 @@ public class StringCalculatorTest {
         Calculator calculator = new Calculator(input);
         MyNumber result = calculator.calculate();
 
-        assertThat(result)
-                .isEqualTo(new MyNumber(12));
+        assertThat(result.equals(new MyNumber(12)))
+                .isTrue();
     }
 
     @Test
@@ -55,8 +55,9 @@ public class StringCalculatorTest {
         String input = "10 / 3";
 
         Calculator calculator = new Calculator(input);
+        MyNumber result = calculator.calculate();
 
-        assertThat(calculator.calculate())
-                .isEqualTo(new MyNumber(3));
+        assertThat(result.equals(new MyNumber(3)))
+                .isTrue();
     }
 }
