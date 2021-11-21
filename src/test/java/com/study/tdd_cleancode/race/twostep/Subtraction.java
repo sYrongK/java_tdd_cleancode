@@ -20,7 +20,7 @@ public class Subtraction extends AbstractCalculator {
     }
 
     @Override
-    public int calculate() {
+    public int get() {
         return front - end;
     }
 }

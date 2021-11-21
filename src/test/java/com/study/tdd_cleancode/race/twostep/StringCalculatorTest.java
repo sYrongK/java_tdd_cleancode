@@ -30,7 +30,7 @@ public class StringCalculatorTest {
             end = arr[i+1];     //index  2 4 6 8 10 12
 
             AbstractCalculator calculator = OperatorType.getCalculator(operator, front, end);
-            front = String.valueOf(calculator.calculate());
+            front = String.valueOf(calculator.get());
         }
         assertThat(Integer.parseInt(front))
                 .isEqualTo(18);
@@ -52,7 +52,7 @@ public class StringCalculatorTest {
                         end = arr[i+1];     //index  2 4 6 8 10 12
 
                         AbstractCalculator calculator = OperatorType.getCalculator(operator, front, end);
-                        front = String.valueOf(calculator.calculate());
+                        front = String.valueOf(calculator.get());
                     }
                 }).withMessageMatching("잘못된 연산자 입니다.");
     }
@@ -73,19 +73,19 @@ public class StringCalculatorTest {
 
             if ("+".equals(operator)) {
                 Addition addition = new Addition(front, end);
-                result = addition.calculate();
+                result = addition.get();
 
             } else if ("-".equals(operator)) {
                 Subtraction subtraction = new Subtraction(front, end);
-                result = subtraction.calculate();
+                result = subtraction.get();
 
             } else if ("*".equals(operator)) {
                 Multiply multiply = new Multiply(front, end);
-                result = multiply.calculate();
+                result = multiply.get();
 
             } else {
                 Division division = new Division(front, end);
-                result = division.calculate();
+                result = division.get();
             }
 
             front = String.valueOf(result);
@@ -107,7 +107,7 @@ public class StringCalculatorTest {
         int result = 0;
         if ("+".equals(operator)) {
             Addition addition = new Addition(front, end);
-            result = addition.calculate();
+            result = addition.get();
         }
 
         assertThat(result)
@@ -129,7 +129,7 @@ public class StringCalculatorTest {
                     int result = 0;
                     if ("+".equals(operator)) {
                         Addition addition = new Addition(front, end);
-                        result = addition.calculate();
+                        result = addition.get();
                     }
                 }).withMessageMatching("사칙연산에 유효하지 않은 값입니다.");
 
@@ -138,7 +138,7 @@ public class StringCalculatorTest {
                     int result = 0;
                     if ("+".equals(operator)) {
                         Addition addition = new Addition(front, end);
-                        result = addition.calculate();
+                        result = addition.get();
                     }
                 }).withMessageMatching("사칙연산에 유효하지 않은 값입니다.");
     }
@@ -156,7 +156,7 @@ public class StringCalculatorTest {
         int result = 0;
         if ("-".equals(operator)) {
             Subtraction subtraction = new Subtraction(front, end);
-            result = subtraction.calculate();
+            result = subtraction.get();
         }
 
         assertThat(result)
@@ -176,7 +176,7 @@ public class StringCalculatorTest {
         int result = 0;
         if ("*".equals(operator)) {
             Multiply multiply = new Multiply(front, end);
-            result = multiply.calculate();
+            result = multiply.get();
         }
 
         assertThat(result)
@@ -196,7 +196,7 @@ public class StringCalculatorTest {
         int result = 0;
         if ("/".equals(operator)) {
             Division division = new Division(front, end);
-            result = division.calculate();
+            result = division.get();
         }
 
         assertThat(result)

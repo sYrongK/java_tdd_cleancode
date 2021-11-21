@@ -4,7 +4,7 @@ public interface Calculator {
 
     public boolean isSupport(String operator);
 
-    public int calculate();
+    public int get();
 
     public boolean isEmpty(String str);
 }
