@@ -17,14 +17,10 @@ public class MyNumber {
     }
 
     private void validate(String str) {
-         int input = 0;
         try {
-            input = Integer.parseInt(str);
+            Integer.parseInt(str);
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력하세요.");
-        }
-        if (0 > input || input > 9) {
-            throw new IllegalArgumentException("정수를 입력하세요.");
         }
     }
 
