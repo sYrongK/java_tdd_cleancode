@@ -1,41 +1,33 @@
 package com.study.tdd_cleancode.race.twostep;
 
-import java.util.function.BinaryOperator;
-
+/**
+ * 계산기
+ */
 public class Calculator {
 
-    private MyNumber first;
-    private String operator;
-    private MyNumber second;
+    private final String input;
 
     public Calculator(String input) {
         if (input == null) {
             throw new IllegalArgumentException("계산식이 잘 못 되었습니다.");
         }
-        calculateFormula(input);
+        this.input = input;
     }
 
-    public void calculateFormula(String input) {
+    public MyNumber calculate() {
         String[] arr = input.split(" ");
         if (arr.length < 3) {
             throw new IllegalArgumentException("계산식이 잘 못 되었습니다.");
         }
-        this.first = new MyNumber(arr[0]);
+        MyNumber first = new MyNumber(arr[0]);
+
         for (int i = 1; i < arr.length; i+=2) {
-            operator = arr[i];
-            second = new MyNumber(arr[i+1]);
-            first = calculate();
+            Operator operator = new Operator(arr[i]);
+            MyNumber second = new MyNumber(arr[i + 1]);
+            first = operator.execute(first, second);
         }
+        return first;
     }
 
-    public MyNumber calculate() {
 
-        BinaryOperator<MyNumber> expression = Operator
-                .search(operator, first, second)
-                .getExpression();
-        /*
-        * MyNumber 2개 인자
-        * */
-        return expression.apply(first, second);
-    }
 }

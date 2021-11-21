@@ -1,5 +1,8 @@
 package com.study.tdd_cleancode.race.twostep;
 
+/**
+ * 계산값
+ */
 public class MyNumber {
 
     private final int number;
@@ -27,11 +30,11 @@ public class MyNumber {
 
     public MyNumber plus(MyNumber other) {
         /*
-        * return 값이 원시형 int라면,
-        * Operator에서 Function을 쓰기 위해서, plus 메서드를 static으로 둬야 한다.
-        * 객체인 MyNumber로 둘 경우, static 안 붙여도 된다.
-        * 클래스가 Static 영역에 있기 때문인 듯
-        * */
+         * return 값이 원시형 int라면,
+         * Operator에서 Function을 쓰기 위해서, plus 메서드를 static으로 둬야 한다.
+         * 객체인 MyNumber로 둘 경우, static 안 붙여도 된다.
+         * 클래스가 Static 영역에 있기 때문인 듯
+         * */
         return new MyNumber(this.number + other.number);
     }
 
@@ -49,5 +52,11 @@ public class MyNumber {
 
     public int getNumber() {
         return number;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        MyNumber other = (MyNumber) obj;
+        return this.number == other.number;
     }
 }

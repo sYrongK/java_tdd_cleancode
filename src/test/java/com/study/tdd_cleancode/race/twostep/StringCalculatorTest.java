@@ -7,6 +7,17 @@ import static org.assertj.core.api.Assertions.*;
 public class StringCalculatorTest {
 
     @Test
+    void 계산식() {
+        String input = "2 + 3 * 2 - 1 / 3";
+
+        Calculator calculator = new Calculator(input);
+        MyNumber result = calculator.calculate();
+
+        assertThat(result.equals(new MyNumber(3)))
+                .isTrue();
+    }
+
+    @Test
     void 덧셈() {
         String input = "2 + 3";
 
@@ -44,9 +55,8 @@ public class StringCalculatorTest {
         String input = "10 / 3";
 
         Calculator calculator = new Calculator(input);
-        MyNumber result = calculator.calculate();
 
-        assertThat(result)
+        assertThat(calculator.calculate())
                 .isEqualTo(new MyNumber(3));
     }
 }
