@@ -1,5 +1,12 @@
 package com.study.tdd_cleancode.race.three;
 
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class CarRaceTest {
 
     /*
@@ -14,4 +21,31 @@ public class CarRaceTest {
     *
     * else 예약어 쓰지 않는다. (switch/case도 사용 x)
     * */
+
+    @Test
+    void 사용자입력_InputView() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int cars = scanner.nextInt();
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        int moving = scanner.nextInt();
+
+        InputView inputView = InputView.of(cars, moving);
+
+        /*assertThat(inputView)
+                .isEqualTo(InputView.of(3, 5));*/
+    }
+
+    @Test
+    void 경주대기_자동차() {
+        int cars = 4;
+        int moving = 7;
+
+        InputView input = InputView.of(cars, moving);
+
+        List<Car> list = new ArrayList<>();
+        for (int i = 0; i < cars; i++) {
+            Car car = Car.of(moving);
+        }
+    }
 }
