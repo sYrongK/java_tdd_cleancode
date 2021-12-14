@@ -1,7 +1,9 @@
 package com.study.tdd_cleancode.race.three;
 
+import com.study.tdd_cleancode.three.Car;
+import com.study.tdd_cleancode.three.InputView;
+import com.study.tdd_cleancode.three.Racing;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,14 +40,38 @@ public class CarRaceTest {
 
     @Test
     void 경주대기_자동차() {
-        int cars = 4;
+        int carsCount = 4;
         int moving = 7;
 
-        InputView input = InputView.of(cars, moving);
+        InputView input = InputView.of(carsCount, moving);
 
-        List<Car> list = new ArrayList<>();
-        for (int i = 0; i < cars; i++) {
-            Car car = Car.of(moving);
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carsCount; i++) {
+            cars.add(new Car());
         }
+    }
+    /*
+    * 큰 범위 = 경주 = 참가자 + 경기진행
+    * 중간 범위 = 참가자들 = 자동차 여러 대
+    * 작은 범위 = 참가자 개개인 = 자동차 = 동작(전진) = 랜덤하게 전진하거나(true) 안하거나(false)
+    * */
+
+    @Test
+    void 자동차_동작() {
+        int carsCount = 4;
+        int moving = 7;
+
+        //  사용자 입력
+        InputView input = InputView.of(carsCount, moving);
+
+        //  참여 자동차 구성
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carsCount; i++) {
+            cars.add(new Car());
+        }
+        //  시합 구성
+        Racing race = Racing.of(moving, cars);
+        
+        race.start();//경주 시작
     }
 }

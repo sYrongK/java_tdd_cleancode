@@ -1,4 +1,4 @@
-package com.study.tdd_cleancode.race.three;
+package com.study.tdd_cleancode.three;
 
 /**
  * 사용자 입력
